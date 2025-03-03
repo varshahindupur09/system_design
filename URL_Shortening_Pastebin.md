@@ -50,5 +50,85 @@ Multiple copies of data -> different servers -> how we sync b/w data? choose it.
      * custom_alias (string)
      * expiration_date (timestamp/datetime)
      * user_id (string)
+   Response:
+    * shortened url (string), creation_date (timestamp), expiration_date (timestamp/datetime)
+  
+2. Redirect API
+   Endpoint: GET/redirect
+   Parameters:
+   * shortened_url: (string)
+   Response:
+   * redirects to original_url
+  
+3. Analytics API
+   Endpoint: GET/redirect
+   Parameters:
+   * shortened url: (string)
+   * start_date (timestamp/datetime)
+   * end_date (timestamp/datetime)
+   Response:
+   * click_count (integer)
+   * unique_click (integer)
+   * sites_referred_traffic_to_shortened_url (integer)
+   * location_data (map)
+   * device_data (map)
 
+4. URL management API
+   Endpoint: GET/ user/urls
+   Parameters:
+   * user_id: (string, required) (id of the user for whom urls are requested)
+   * page (integer, optional) (for paginated results)
+   * page_size (integer, optional) (for number of results per page)
+   Response:
+   * urls (list) : info like metadata like (creation_date, expiration_date)
 
+6. Delete Shorten API
+   Endpoint: DELETE /{shortened_url}
+   Parameters:
+   * shortened_url (string, required)
+   * user_id (string, required)
+   Response:
+   * status (string)
+  
+## Database Schema (RDBMS / NoSQL)
+
+**Table:**
+* User: UserId (PK), Name, Email, PasswordHash, creation_date
+* URL: Hash (PK), original_url, creation_date, expiration_date, UserId (FK)
+* Analytics: AnalyticsId (PK), URLhash, click_timestamp, sites_referred_traffic_to_shortened_url, location
+
+**Relationships:**
+1 User ----> (can create) many -------> URLs
+1 URL ----> (can create) many -------> Analytics
+
+<img width="1397" alt="image" src="https://github.com/user-attachments/assets/7ad5b69e-47dc-4bf6-bf27-a2b2f907e033" />
+
+### The image explains a basic system design and algorithm for generating a short and unique key for a given URL, typically used in URL shortening services.
+
+#### Steps Involved:
+Hashing & Encoding
+
+The original URL (e.g., https://www.designgurus.org/course/grokking-the-system-design-interview) is taken as input.
+A hash function such as MD5 or SHA256 is used to generate a 128-bit hash.
+Example hash (MD5):
+3c48c3223d7bbf0d5d0f02902eb0f305
+Encoding the Hash
+
+The hash is encoded using base36, base62, or base64 encoding to convert it into a shorter, URL-friendly string.
+Example base64 encoding of the hash:
+PEjDIj17vw1dDwKQLrDzBQ+P
+Base64 uses characters A-Z, a-z, 0-9, +, / and results in around 21 characters.
+Generating the Short Key
+
+The first few characters of the encoded string are selected to form a short key.
+Example short key:
+PEjDIj (First 6 characters).
+Issues:
+Duplicate Short Keys for Identical URLs:
+If two identical URLs are hashed, they will generate the same short key.
+A solution is to append random salt or a unique identifier to ensure uniqueness.
+Purpose:
+This method is commonly used in URL shorteners like bit.ly or TinyURL, where long URLs are converted into short and manageable links.
+Would you like more details on a specific part
+  
+   
