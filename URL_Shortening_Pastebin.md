@@ -163,7 +163,7 @@ Another possibility, App Server --->  Cache ---> DB
 
 <img width="768" alt="image" src="https://github.com/user-attachments/assets/c5af41be-5fe6-429e-9dcf-5b6a5854327e" />
 
-
+<img width="862" alt="image" src="https://github.com/user-attachments/assets/8957cbe4-50d2-4ff7-b3be-e736acfaa5bd" />
 
 
 
