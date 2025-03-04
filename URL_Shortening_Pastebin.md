@@ -130,5 +130,49 @@ A solution is to append random salt or a unique identifier to ensure uniqueness.
 Purpose:
 This method is commonly used in URL shorteners like bit.ly or TinyURL, where long URLs are converted into short and manageable links.
 Would you like more details on a specific part
-  
+
+## URL Redirection Workflow
+
+<img width="1016" alt="image" src="https://github.com/user-attachments/assets/e21f79ca-ef9f-419d-adc2-4963ad23512e" />
+
+## Cache
+
+<img width="1307" alt="image" src="https://github.com/user-attachments/assets/0fe86013-91a0-4f5c-a81d-96cf57683547" />
+
+Another possibility, App Server --->  Cache ---> DB
+
+## Purging or DB cleanup
+
+<img width="1278" alt="image" src="https://github.com/user-attachments/assets/59adf471-5d38-441f-9401-c09e0bace456" />
+
+## System Design 1
+
+<img width="1060" alt="image" src="https://github.com/user-attachments/assets/835f506b-43ab-4d6f-9270-dc21464b3ead" />
+
+## Data Partitioning
+
+<img width="1392" alt="image" src="https://github.com/user-attachments/assets/b94a441b-782d-4ad8-b61a-a15b088ee68f" />
+
+<img width="1365" alt="image" src="https://github.com/user-attachments/assets/77767957-27c5-4806-9573-73f22b2d89af" />
+
+## More
+
+<img width="1316" alt="image" src="https://github.com/user-attachments/assets/3ef9e744-a099-48cd-b5a6-5d6b6caaa506" />
+
+## FInal Diagram
+
+<img width="768" alt="image" src="https://github.com/user-attachments/assets/c5af41be-5fe6-429e-9dcf-5b6a5854327e" />
+
+
+
+
+
+
+
+
+
+
+
+
+
    
